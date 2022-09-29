@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  dev-db:
+    image: postgis/postgis
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${POSTGRES_DB}"
+    networks:
+      - deliverypro
+  test-db:
+    image: postgis/postgis
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_USER: "${DEV_POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${DEV_POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${DEV_POSTGRES_DB}"
+    networks:
+      - deliverypro
+networks: deliverypro
